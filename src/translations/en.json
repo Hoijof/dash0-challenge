@@ -1,0 +1,15 @@
+{
+  "Severity": "Severity",
+  "Time": "Time",
+  "Body": "Body",
+  "Count": "Count",
+  "minute": "minute",
+  "hour": "hour",
+  "day": "day",
+  "week": "week",
+  "startDate": "Start Date",
+  "endDate": "End Date",
+  "clear": "Clear",
+  "histogram": "Histogram",
+  "table": "Table"
+}

@@ -1,0 +1,15 @@
+{
+  "Severity": "Gravedad",
+  "Time": "Tiempo",
+  "Body": "Cuerpo",
+  "Count": "Cantidad",
+  "minute": "minuto",
+  "hour": "hora",
+  "day": "día",
+  "week": "semana",
+  "startDate": "Fecha de inicio",
+  "endDate": "Fecha de fin",
+  "clear": "Limpiar",
+  "histogram": "Histograma",
+  "table": "Tabla"
+}

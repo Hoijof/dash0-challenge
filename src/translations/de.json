@@ -1,0 +1,15 @@
+{
+  "Severity": "Schwere",
+  "Time": "Zeit",
+  "Body": "Körper",
+  "Count": "Anzahl",
+  "minutes": "Minuten",
+  "hour": "Stunde",
+  "day": "Tag",
+  "week": "Woche",
+  "startDate": "Startdatum",
+  "endDate": "Enddatum",
+  "clear": "klar",
+  "histogram": "Histogramm",
+  "table": "Tabelle"
+}
