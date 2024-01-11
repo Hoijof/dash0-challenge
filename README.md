@@ -1,36 +1,38 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+The objective of this repo is to implement [this](https://github.com/dash0hq/take-home-assignments/tree/main/otlp-log-viewer) coding challenge for Dash0.
+
+## Testing the solution
+
+You can access the final version of this challenge on this vercel [deployment url](https://dash0-challenge.vercel.app/visualize) or download the repo and run it with the steps below.
+
+## Getting Started Locally
 
 First, run the development server:
 
 ```bash
+npm i
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This code challenge implemented the following features:
+1. Retrieve a list of log records from the OTLP logs HTTP endpoint.
+2. Render a table with the log records with the following columns [Severity, Time, Body].
+3. Add capability to expand a log record of the table and see all its related information.
+4. Render a histogram visualizing the distribution of log records.
 
-## Learn More
+## Extra features
+1. Basic i18n.
+2. Add capability to select bucket size and time period on the histogram viz.
 
-To learn more about Next.js, take a look at the following resources:
+## Libraries used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### @nivo
+React library for charting that is a direct wrapper on top of d3. I
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### swr
+Vercel fetching solution. Provides out of the box caching, and refetching.
