@@ -31,7 +31,9 @@ export function Header() {
             <li>
               <button
                 onClick={navigateToHistogram}
-                className={`mr-4 ${isRouteSelected('/histogram')}`}
+                className={`mr-4 rounded-sm p-2 hover:underline ${isRouteSelected(
+                  '/histogram'
+                )}`}
               >
                 {t('histogram')}
               </button>
@@ -39,7 +41,9 @@ export function Header() {
             <li>
               <button
                 onClick={navigateToVisualize}
-                className={isRouteSelected('/visualize')}
+                className={`mr-4 rounded-sm p-2 hover:underline ${isRouteSelected(
+                  '/visualize'
+                )}`}
               >
                 {t('table')}
               </button>
@@ -48,8 +52,8 @@ export function Header() {
         </div>
         <div className='flex-row justify-end'>
           <ul className='ml-2 flex'>
-            {Object.values(Languages).map((language, index) => (
-              <li key={language} className='pl-2'>
+            {Object.values(Languages).map((language) => (
+              <li key={language} className='pl-2 hover:underline'>
                 <button
                   onClick={() => changeLanguage(language)}
                   className={currentLanguage === language ? 'font-bold' : ''}

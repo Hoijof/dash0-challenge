@@ -9,9 +9,6 @@ export type A11yProps = {
   [key: string]: any;
 };
 
-/**
- * Default row renderer for Table.
- */
 export default function ExpandedRowRenderer({
   onRowClick,
   key,
@@ -31,7 +28,12 @@ export default function ExpandedRowRenderer({
 
   return (
     <div
-      style={{ ...style, display: 'flex', flexDirection: 'column' }}
+      style={{
+        ...style,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+      }}
       className={className}
       key={key}
     >
@@ -43,14 +45,18 @@ export default function ExpandedRowRenderer({
       })}
       <div
         style={{
-          marginRight: 'auto',
-          marginLeft: 80,
-          height: 48,
-          display: 'flex',
-          alignItems: 'center',
+          marginLeft: 18,
+          height: 120,
+          flexWrap: 'wrap',
         }}
+        className='flex flex-col '
       >
-        {JSON.stringify(rowData.extraInfo)}
+        {Object.entries(rowData.extraInfo).map(([key, value]) => (
+          <div key={key} style={{ flexBasis: '20%' }}>
+            <span>{key}: </span>
+            <span>{value as string}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

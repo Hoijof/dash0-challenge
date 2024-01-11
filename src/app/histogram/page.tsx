@@ -17,11 +17,11 @@ import {
 } from '@components/date-range-selector/DateRangeSelector';
 import { I18nContext } from '@/components/page';
 
+const DATA_URL =
+  'https://take-home-assignment-otlp-logs-api.vercel.app/api/logs';
+
 export default function HistogramPage() {
-  const { data: apiData, isLoading } = useSWR(
-    'https://take-home-assignment-otlp-logs-api.vercel.app/api/logs',
-    fetcher
-  );
+  const { data: apiData, isLoading } = useSWR(DATA_URL, fetcher);
   const { t } = useContext(I18nContext);
 
   const [histogramData, setHistogramData] = useState<HistogramData[]>([]);
@@ -44,7 +44,7 @@ export default function HistogramPage() {
   }, [apiData, bucketSize, dateRange]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>{t('loading')}...</div>;
   }
 
   return (
@@ -54,6 +54,8 @@ export default function HistogramPage() {
           timeFrame={bucketSize}
           setTimeFrame={setBucketSize}
         />
+      </div>
+      <div className='flex justify-center p-4'>
         <DateRangeSelector dateRange={dateRange} setDateRange={setDateRange} />
       </div>
       <div className='flex-grow'>

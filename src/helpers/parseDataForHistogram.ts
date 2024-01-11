@@ -3,8 +3,6 @@ import {
   IExportLogsServiceRequest,
   IResourceLogs,
   ILogRecord,
-  IResource,
-  Fixed64,
   IScopeLogs,
 } from '@opentelemetry/otlp-transformer';
 

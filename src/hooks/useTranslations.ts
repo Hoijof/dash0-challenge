@@ -24,9 +24,11 @@ const useTranslations = (
   defaultLanguage: string = Languages.EN,
   forceDefault: boolean = false
 ): UseTranslationsReturn => {
-  const browserLanguage = navigator.language.split('-')[0];
+  const browserLanguage =
+    typeof window !== 'undefined' && navigator.language.split('-')[0];
+  const shouldUseDefaultLanguage = forceDefault || !browserLanguage;
   const [currentLanguage, setCurrentLanguage] = useState(
-    forceDefault ? defaultLanguage : browserLanguage
+    shouldUseDefaultLanguage ? defaultLanguage : browserLanguage
   );
   const [currentTranslations, setCurrentTranslations] =
     useState<TranslationFile>(null);
@@ -43,7 +45,7 @@ const useTranslations = (
         setCurrentLanguage(FALLBACK_LANGUAGE);
         translations = await getTranslations(FALLBACK_LANGUAGE);
       }
-      
+
       setCurrentTranslations(translations);
     };
 
@@ -55,7 +57,7 @@ const useTranslations = (
       if (!currentTranslations || !currentTranslations[key]) {
         return key;
       }
-      
+
       return currentTranslations[key];
     },
     [currentTranslations]

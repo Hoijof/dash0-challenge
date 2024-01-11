@@ -3,6 +3,7 @@
   "Time": "Tiempo",
   "Body": "Cuerpo",
   "Count": "Cantidad",
+  "timeframe": "Periodo de tiempo",
   "minute": "minuto",
   "hour": "hora",
   "day": "día",
@@ -11,5 +12,7 @@
   "endDate": "Fecha de fin",
   "clear": "Limpiar",
   "histogram": "Histograma",
-  "table": "Tabla"
+  "table": "Tabla",
+  "loading": "Cargando",
+  "errorLoadingData": "Error al cargar los datos"
 }

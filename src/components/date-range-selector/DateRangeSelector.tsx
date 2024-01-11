@@ -67,7 +67,13 @@ export function DateRangeSelector({
         onChange={handleEndDateChange}
       />
 
-      <button onClick={handleClear}> - {t('clear')}</button>
+      <button
+        className='m-1 rounded-sm bg-gray-200 p-1 capitalize text-gray-700 hover:ring-1'
+        onClick={handleClear}
+      >
+        {' '}
+        {t('clear')}
+      </button>
     </div>
   );
 }

@@ -26,7 +26,7 @@ export function TimeFrameSelector({
             onClick={() =>
               setTimeFrame(TIME_FRAMES[key as keyof typeof TIME_FRAMES])
             }
-            className={`m-2 p-1 capitalize ${selectedClass}`}
+            className={`m-2 rounded-sm p-2 capitalize hover:ring-1 ${selectedClass}`}
           >
             <span>{t(key.toLowerCase())}</span>
           </button>

@@ -12,7 +12,6 @@ import {
 import {
   Table,
   Column,
-  TableRowRenderer,
   AutoSizer,
   Index,
   SortDirection,
@@ -28,18 +27,14 @@ import { fetcher } from '@/helpers/fetcher';
 import { I18nContext } from '@/components/page';
 
 const TABLE_ROW_HEIGHT = 30;
-const EXPANDED_TABLE_ROW_HEIGHT = 96;
+const EXPANDED_TABLE_ROW_HEIGHT = TABLE_ROW_HEIGHT + 120;
 const TABLE_HEADER_HEIGHT = 30;
 
+const DATA_URL =
+  'https://take-home-assignment-otlp-logs-api.vercel.app/api/logs';
+
 const Page = () => {
-  const {
-    data: apiData,
-    error,
-    isLoading,
-  } = useSWR(
-    'https://take-home-assignment-otlp-logs-api.vercel.app/api/logs',
-    fetcher
-  );
+  const { data: apiData, error, isLoading } = useSWR(DATA_URL, fetcher);
 
   const tableRef = useRef<Table>();
   const [sortBy, setSortBy] = useState('time');
@@ -55,8 +50,11 @@ const Page = () => {
     }
   }, [apiData]);
 
-  const getRowHeight = ({ index }: { index: number }) =>
-    expandedRows.has(index) ? EXPANDED_TABLE_ROW_HEIGHT : TABLE_ROW_HEIGHT;
+  const getRowHeight = ({ index }: { index: number }) => {
+    return expandedRows.has(index)
+      ? EXPANDED_TABLE_ROW_HEIGHT
+      : TABLE_ROW_HEIGHT;
+  };
 
   const sort = useCallback(
     ({
@@ -101,15 +99,7 @@ const Page = () => {
   }, [expandedRows]);
 
   const onRowClick = useCallback(
-    ({
-      event,
-      index,
-      rowData,
-    }: {
-      event: any;
-      index: number;
-      rowData: any;
-    }) => {
+    ({ index }: { event: any; index: number; rowData: any }) => {
       const newSet = new Set(expandedRows);
 
       if (newSet.has(index)) {
@@ -126,11 +116,11 @@ const Page = () => {
   const { t } = useContext(I18nContext);
 
   if (error) {
-    return <div>Error loading data</div>;
+    return <div>{t('errorLoadingData')}</div>;
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>{t('loading')}...</div>;
   }
 
   return (
